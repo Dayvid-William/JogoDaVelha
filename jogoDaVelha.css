@@ -7,6 +7,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
+h2{
+    color: #e8f1f2;
+}
+
 body {
     background-color: #006494;
 }
@@ -18,11 +22,27 @@ h2 {
 
 .container {
     margin: 0 auto;
-    max-width: 240px;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1b98e0;
+    border: 3px solid #e8f1f2;
 }
 
 .grid {
     display: flex;
     flex-flow: row wrap;
-    
+    justify-content: space-evenly;
+}
+
+.area {
+    width: 125px;
+    height: 115px;
+    font-size: 30pt;
+    margin: 4px 2px;
+    font-weight: 300;
+    padding-top: 10px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #13293d;
 }
