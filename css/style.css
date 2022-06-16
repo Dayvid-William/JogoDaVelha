@@ -3,10 +3,6 @@
     src: url('../fonts/Oswald-Regular.ttf') format('truetype');
 }
 
-* {
-    font-family: 'Oswald', sans-serif;
-}
-
 h2{
     color: #e8f1f2;
 }
@@ -22,7 +18,7 @@ h2 {
 
 .container {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 240px;
     padding: 20px;
     border-radius: 10px;
     background-color: #1b98e0;
@@ -35,9 +31,9 @@ h2 {
     justify-content: space-evenly;
 }
 
-.area {
-    width: 125px;
-    height: 115px;
+.boxs {
+    width: 75px;
+    height: 65px;
     font-size: 30pt;
     margin: 4px 2px;
     font-weight: 300;
@@ -45,4 +41,5 @@ h2 {
     border-radius: 3px;
     text-align: center;
     background-color: #13293d;
+    color: #e8f1f2;
 }
