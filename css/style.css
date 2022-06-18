@@ -1,45 +1,103 @@
-@font-face {
-    font-family: 'Oswald';
-    src: url('../fonts/Oswald-Regular.ttf') format('truetype');
-}
-
-h2{
-    color: #e8f1f2;
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-    background-color: #006494;
-}
-
-h2 {
-    margin-top: -5px;
-    text-align: center;
-}
-
-.container {
-    margin: 0 auto;
-    max-width: 240px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #1b98e0;
-    border: 3px solid #e8f1f2;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(90deg ,
+    rgba(9, 86, 235, 1) 0% ,
+    rgba(10, 213, 219, 1)  100%
+    );
 }
 
 .board {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+/* cell */ 
+.cell {
+    width: 100px;
+    height: 100px;
+    border:  2px solid white;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+}
+[left-top],
+[left-center],
+[left-lower] {
+    border-left: none;
 }
 
-.boxs {
-    width: 75px;
-    height: 65px;
-    font-size: 30pt;
-    margin: 4px 2px;
-    font-weight: 300;
-    padding-top: 10px;
-    border-radius: 3px;
-    text-align: center;
-    background-color: #13293d;
-    color: #e8f1f2;
+[left-top],
+[center-top],
+[right-top] {
+    border-top: none;
+}
+
+[right-top],
+[right-center],
+[right-lower]{
+    border-right: none;
+}
+
+[left-lower],
+[center-lower],
+[right-lower] {
+    border-bottom: none;
+}
+.cell.x, .cell.circle {
+    cursor: not-allowed;
+}
+
+/* X */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:hover::before,
+.board.x .cell:hover::after {
+    content: "";
+    height: calc(100px * 0.15);
+    width: calc(100px * 0.9);
+    background: white;
+    position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after, 
+.board.x .cell.cell:hover::after{
+    transform: rotate(-45deg);
+}
+
+/* circle */
+.cell.circle::before,
+.cell.circle::after,
+.board.circle .cell:hover::before,
+.board.circle .cell:hover::after {
+    content: "";
+    height: calc(65px * 0.9);
+    width: calc(65px * 0.9);
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    border: solid white 15px;
+    background: none;
+}
+
+/* menssage */
+.winning-menssage {
+    display: none;
 }
