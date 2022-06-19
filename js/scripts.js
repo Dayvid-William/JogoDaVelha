@@ -1,9 +1,10 @@
-const boxs = document.querySelectorAll(".boxs")
-let checkTime = true
-const playerX = "x"
-const playerO = "O"
+const board = document.querySelector('[data-board]');
+const cellElements = document.querySelectorAll('[data-cell]');
+const winningMessage = document.querySelector('[winning-menssage-text]');
 
-const winCondition = [
+let isCircleTurn;
+
+const winningCombinations = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -11,48 +12,54 @@ const winCondition = [
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [6, 4, 2]
-]
+    [2, 4, 6]
+];
 
-document.addEventListener("click", (event) => {
-    if (event.target.matches(".boxs")){
-        play(event.target.id)
- }});
+const startGame = () => {
+    for (cell of cellElements) {
+    cell.addEventListener('click', handleClick, {once : true});
+    };
+    
+    isCircleTurn = false;
 
- function play(id) {
-    const box = document.getElementById(id)
-    time = checkTime ? playerX : playerO
-    box.textContent = time
-    box.classList.add(time)
-    checkVictory(time)
- }
-
-function checkVictory(time) {
-    const winner = winCondition.some((win) => {
-        return win.every((index) => {
-            return boxs(index).classList.contains(time)
-        })
-    })
-
-    if (winner){
-        endGame(time)
-    } else if (checkDraw) {
-        endGame()
-    }else{
-        checkTime = !checkTime
-    }
+    board.classList.add("x");
 }
 
+const checkForWin = (currentPlayer) => {
+    return winningCombinations.some((combination) => {
+        return combination.every((index) => {
+            return cellElements[index].classList.contains(currentPlayer);
+        });
+    });
+};
 
-function checkDraw() {
-    return false
-}
+const placeMark = (cell, classToAdd) => {
+    cell.classList.add(classToAdd);
+};
 
+const swapTurns = () => {
+    isCircleTurn = !isCircleTurn;
 
-function endGame(winner = null) {
-    if (winner) {
-        console.log(`${winner} is the winner !`)
-    }else {
-        console.log("Draw")
-    }
-}
+    board.classList.remove('circle');
+    board.classList.remove('x');
+
+    if( isCircleTurn ) {
+        board.classList.add("circle");
+    } else {
+        board.classList.add("x");
+    };
+};
+
+const handleClick = (e) => {
+    const cell = e.target;
+    const classToAdd = isCircleTurn ? 'circle' : 'x';
+
+    placeMark(cell, classToAdd);
+
+    swapTurns();
+
+    const isWin = checkForWin(classToAdd);
+
+};
+
+startGame()

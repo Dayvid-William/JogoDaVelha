@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ne">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,24 +9,23 @@
 </head>
 <body>
     <div class="container">
-        <h2>Jogo da Velha</h2>
-        <div class="board x">
-            <div class="cell x" left-top></div>
-            <div class="cell circle" center-top></div>
-            <div class="cell" right-top></div>
-            <div class="cell" left-center></div>
-            <div class="cell" center-center></div>
-            <div class="cell" right-center></div>
-            <div class="cell" left-lower></div>
-            <div class="cell" center-lower></div>
-            <div class="cell" right-lower></div>
+        <div class="board x" data-board>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
+            <div class="cell" data-cell=""></div>
         </div>
 
         <div class="winning-menssage">
-            <p>X Venceu!</p>
-            <button>Reiniciar</button>
+            <p class="winning-menssage-text" data-winning-menssage-text>X Venceu!</p>
+            <button class="winning-menssage-button" data-winnig-menssage-button>Reiniciar</button>
         </div>
     </div>
-    <!--<script src="js/scripts.js"></script> -->
+    <script src="js/scripts.js"></script>
 </body>
 </html>
